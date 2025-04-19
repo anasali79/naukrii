@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="80" height="24" viewBox="0 0 80 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M8 4h4l6 16h-4L8 4zm10 0h4l6 16h-4L18 4z" fill="#FF4081"/>
+  <circle cx="40" cy="12" r="8" fill="#FF4081"/>
+  <path d="M56 4h4v16h-4V4zm10 0h4v16h-4V4z" fill="#FF4081"/>
+  <path d="M76 4c4.418 0 8 3.582 8 8s-3.582 8-8 8-8-3.582-8-8 3.582-8 8-8zm0 3c-2.761 0-5 2.239-5 5s2.239 5 5 5 5-2.239 5-5-2.239-5-5-5z" fill="#FF4081"/>
+</svg> 
