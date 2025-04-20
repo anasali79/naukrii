@@ -41,6 +41,7 @@ import Profile from './pages/Profile';
 import ProtectedRoute from './components/ProtectedRoute';
 import { useAuth } from './hooks/useAuth';
 import ProfileEdit from './pages/ProfileEdit';
+import AIInterviewPage from "./pages/AIInterviewPage";
 
 const queryClient = new QueryClient();
 
@@ -89,11 +90,14 @@ const App = () => {
             <Route path="/companies/category/:category" element={<AllCompanies />} />
             <Route path="/companies/collection/:collection" element={<AllCompanies />} />
             <Route path="/about" element={<About />} />
+            <Route path="/search" element={<JobSearchResults />} />
+             
             
             {/* Jobs Routes */}
             <Route path="/jobs/popular-categories" element={<PopularCategories />} />
             <Route path="/jobs/in-demand" element={<InDemand />} />
             <Route path="/jobs/by-location" element={<ByLocation />} />
+            <Route path="/jobs" element={<JobsByCategoryPage />} />
             
             {/* Companies Routes */}
             <Route path="/companies/explore-categories" element={<ExploreCategories />} />
@@ -109,6 +113,10 @@ const App = () => {
             <Route path="/services/mock-interview" element={<MockInterviewQuestions />} />
             <Route path="/services/resume-writing" element={<ResumeWritingServices />} />
             <Route path="/services/code360" element={<Code360 />} />
+            <Route path="/services" element={<PaidServices />} />
+            <Route path="/mock-interview" element={<AIInterviewPage />} />
+
+            
             
             {/* Support Routes */}
             <Route path="/chat-help" element={<ChatHelp />} />

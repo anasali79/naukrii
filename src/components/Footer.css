@@ -1,0 +1,27 @@
+.marquee-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  background-color: transparent; /* Remove background color */
+  padding: 0; /* Remove any padding */
+  margin: 0; /* Ensure no margin around the container */
+}
+
+.marquee-content {
+  display: flex;
+  animation: marquee 20s linear infinite;
+}
+
+.marquee-content img {
+  flex-shrink: 0;
+  height: 3rem; /* Adjust the height of the logos */
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(-100%);
+  }
+}

@@ -2,7 +2,7 @@
 import React from 'react';
 import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
-import { MapPin, Users, Star } from 'lucide-react';
+import { MapPin, Users, Star, Link } from 'lucide-react';
 
 // Sample company data
 const companies = [

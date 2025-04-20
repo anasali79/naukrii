@@ -9,6 +9,10 @@ const NaukriHero = () => {
   const [experience, setExperience] = useState('');
   const [location, setLocation] = useState('');
 
+  const handleStartForFree = () => {
+    navigate('/ai-interview');
+  };
+
   const handleSearch = (e: React.FormEvent) => {
     e.preventDefault();
     const allJobs = Object.values(jobDataByCategory).flat() as Job[];
@@ -94,7 +98,7 @@ const NaukriHero = () => {
 
           {/* Search Section */}
           <form onSubmit={handleSearch} className="max-w-4xl mx-auto mb-8">
-            <div className="flex gap-3 p-3 bg-white rounded-xl shadow-lg">
+            <div className="flex gap-3 p-3 bg-white rounded-full shadow-lg">
               <div className="flex-1 relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
                 <input
@@ -127,7 +131,7 @@ const NaukriHero = () => {
               />
               <button
                 type="submit"
-                className="px-8 py-3 bg-[#4A90E2] text-white font-medium rounded-lg hover:bg-blue-600 transition"
+                className="px-8 py-3 bg-[#4A90E2] text-white  font-medium rounded-full hover:bg-blue-600 transition"
               >
                 Search
               </button>
