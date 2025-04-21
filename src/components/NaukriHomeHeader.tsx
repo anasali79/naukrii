@@ -248,9 +248,11 @@ const NaukriHomeHeader = () => {
               <Link to="/register" className="bg-[#ff7555] text-white px-6 py-2 rounded-full hover:bg-[#f06a4b] transition">
                 Register
               </Link>
+              <Link to="/for-employers">
               <button className="text-gray-700 hover:text-blue-600 px-6 py-2 rounded-full hover:bg-gray-50">
                 For employers
               </button>
+              </Link>
             </div>
           </div>
         </div>
