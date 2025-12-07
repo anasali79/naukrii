@@ -30,6 +30,13 @@ const ApplicationSuccess = () => {
           You'll receive an email confirmation shortly.
         </p>
         
+        <div className="bg-blue-50 border border-blue-200 rounded-lg p-4 mt-6">
+          <p className="text-blue-800">
+            <strong>Track your application:</strong> Visit the "My Applications" section in your profile 
+            to view the status of this and all your other job applications.
+          </p>
+        </div>
+        
         <div className="flex flex-col sm:flex-row gap-4 justify-center mt-8">
           <button
             onClick={() => navigate('/jobs')}
@@ -50,4 +57,4 @@ const ApplicationSuccess = () => {
   );
 };
 
-export default ApplicationSuccess; 
+export default ApplicationSuccess;

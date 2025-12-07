@@ -14,6 +14,11 @@ export default function JobCard({ job }: JobCardProps) {
     navigate(`/jobs/${job.id}`);
   };
 
+  const handleApplyClick = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    navigate(`/apply-job/${job.id}`);
+  };
+
   return (
     <div 
       onClick={handleCardClick}
@@ -31,7 +36,7 @@ export default function JobCard({ job }: JobCardProps) {
         </div>
       </div>
 
-      <div className="grid grid-cols-2 gap-4">
+      <div className="grid grid-cols-2 gap-4 mb-4">
         <div className="flex items-center text-gray-600">
           <MapPin className="w-4 h-4 mr-1" />
           <span>{job.location}</span>
@@ -46,6 +51,15 @@ export default function JobCard({ job }: JobCardProps) {
           <Briefcase className="w-4 h-4 mr-1" />
           <span>{job.experience}</span>
         </div>
+      </div>
+
+      <div className="flex justify-end mt-4">
+        <button
+          onClick={handleApplyClick}
+          className="bg-blue-600 text-white px-4 py-2 rounded-full text-sm hover:bg-blue-700 transition"
+        >
+          Apply Now
+        </button>
       </div>
     </div>
   );

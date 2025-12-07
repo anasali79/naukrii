@@ -3,10 +3,12 @@ import { useNavigate, useParams } from 'react-router-dom';
 import { Building2, MapPin, Briefcase, IndianRupee, Calendar } from 'lucide-react';
 import { jobDataByCategory } from '../data/jobs';
 import { supabase } from '@/integrations/supabase/client';
+import { useToast } from '@/components/ui/use-toast';
 
 const ApplyJob = () => {
   const { jobId } = useParams();
   const navigate = useNavigate();
+  const { toast } = useToast();
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
 
@@ -70,8 +72,35 @@ const ApplyJob = () => {
     try {
       setLoading(true);
       
-      // Here you would typically make an API call to submit the application
-      // For now, we'll just simulate a successful application
+      // Get current user
+      const { data: { session } } = await supabase.auth.getSession();
+      if (!session) {
+        toast({
+          title: "Authentication Error",
+          description: "You must be logged in to apply for jobs.",
+          variant: "destructive",
+        });
+        return;
+      }
+
+      // Save application to database
+      const { error } = await supabase
+        .from('job_applications')
+        .insert({
+          job_id: job.id,
+          user_id: session.user.id,
+          job_title: job.title,
+          company_name: job.company,
+          location: job.location,
+        });
+
+      if (error) throw error;
+
+      // Show success message
+      toast({
+        title: "Application Submitted",
+        description: `Your application for ${job.title} at ${job.company} has been submitted successfully.`,
+      });
       
       // Navigate to success page with job details
       navigate('/application-success', {
@@ -82,13 +111,23 @@ const ApplyJob = () => {
       });
     } catch (error) {
       console.error('Application error:', error);
-      // Handle error appropriately
+      toast({
+        title: "Application Failed",
+        description: "There was an error submitting your application. Please try again.",
+        variant: "destructive",
+      });
+    } finally {
+      setLoading(false);
     }
+  };
+
+  const handleSimilarJobClick = (jobId: string) => {
+    navigate(`/apply-job/${jobId}`);
   };
 
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
-      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
+      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8 mb-6">
         <h1 className="text-2xl font-bold text-gray-900 mb-6">Apply for Position</h1>
         
         {/* Job Summary */}
@@ -150,8 +189,40 @@ const ApplyJob = () => {
           </div>
         </div>
       </div>
+
+      {/* Similar Jobs */}
+      <div className="bg-white rounded-xl shadow-sm border border-gray-100 p-8">
+        <h2 className="text-xl font-semibold text-gray-900 mb-4">Similar Jobs</h2>
+        <div className="grid gap-4">
+          {Object.values(jobDataByCategory)
+            .flat()
+            .filter(j => 
+              j.id !== job.id && 
+              (j.skills.some(skill => job.skills.includes(skill)) ||
+               j.title.toLowerCase().includes(job.title.toLowerCase()))
+            )
+            .slice(0, 3)
+            .map(similarJob => (
+              <div
+                key={similarJob.id}
+                className="flex justify-between items-center p-4 border border-gray-100 rounded-lg hover:shadow-md transition"
+              >
+                <div>
+                  <h3 className="font-medium text-gray-900 mb-1">{similarJob.title}</h3>
+                  <div className="text-sm text-gray-600">{similarJob.company} • {similarJob.location}</div>
+                </div>
+                <button
+                  onClick={() => handleSimilarJobClick(similarJob.id)}
+                  className="bg-white text-blue-600 px-4 py-1 rounded-full border border-blue-600 hover:bg-blue-50 transition"
+                >
+                  Apply
+                </button>
+              </div>
+            ))}
+        </div>
+      </div>
     </div>
   );
 };
 
-export default ApplyJob; 
+export default ApplyJob;

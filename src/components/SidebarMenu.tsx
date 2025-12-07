@@ -9,6 +9,7 @@ export interface CategoryItem {
   name: string;
   link: string;
   isNew?: boolean;
+  items?: CategoryItem[]; // Nested items
 }
 
 export interface Category {
@@ -17,7 +18,7 @@ export interface Category {
   title: string;
   link?: string;
   items?: CategoryItem[];
-  isExpanded?: boolean;
+  isNew?: boolean;
 }
 
 const SidebarMenu = ({ onClose }: { onClose?: () => void }) => {
@@ -180,16 +181,44 @@ const SidebarMenu = ({ onClose }: { onClose?: () => void }) => {
       <ul className="ml-8 mt-1 space-y-1">
         {items.map((item) => (
           <li key={item.id}>
-            <Link 
-              to={item.link} 
-              className="block py-2 text-gray-600 hover:text-gray-900"
-              onClick={() => onClose && onClose()}
-            >
-              {item.name}
-              {item.isNew && (
-                <span className="ml-2 bg-blue-500 text-white text-xs px-1 rounded">New</span>
-              )}
-            </Link>
+            {item.items ? (
+              <>
+                <div className="flex items-center justify-between">
+                  <Link 
+                    to={item.link} 
+                    className="block py-2 text-gray-600 hover:text-gray-900 flex-1"
+                    onClick={() => onClose && onClose()}
+                  >
+                    {item.name}
+                    {item.isNew && (
+                      <span className="ml-2 bg-blue-500 text-white text-xs px-1 rounded">New</span>
+                    )}
+                  </Link>
+                  <button
+                    onClick={() => toggleCategory(item.id)}
+                    className="p-1"
+                  >
+                    {expandedCategories[item.id] ? (
+                      <ChevronUp className="h-4 w-4 text-gray-500" />
+                    ) : (
+                      <ChevronDown className="h-4 w-4 text-gray-500" />
+                    )}
+                  </button>
+                </div>
+                {expandedCategories[item.id] && item.items && renderNestedItems(item.items, item.id)}
+              </>
+            ) : (
+              <Link 
+                to={item.link} 
+                className="block py-2 text-gray-600 hover:text-gray-900"
+                onClick={() => onClose && onClose()}
+              >
+                {item.name}
+                {item.isNew && (
+                  <span className="ml-2 bg-blue-500 text-white text-xs px-1 rounded">New</span>
+                )}
+              </Link>
+            )}
           </li>
         ))}
       </ul>
@@ -200,11 +229,7 @@ const SidebarMenu = ({ onClose }: { onClose?: () => void }) => {
     <div className="py-4">
       <div className="mb-4 px-4">
         <Link to="/" className="flex items-center" onClick={() => onClose && onClose()}>
-          <img 
-            src="/naukri-logo.png" 
-            alt="Naukri Logo" 
-            className="h-10" 
-          />
+          <h1 className="text-2xl font-bold text-blue-600">JobPortal</h1>
         </Link>
       </div>
       <div className="space-y-1">
@@ -233,28 +258,41 @@ const SidebarMenu = ({ onClose }: { onClose?: () => void }) => {
                   <div className="mt-1 ml-4 space-y-1">
                     {category.items.map((item) => (
                       <div key={item.id}>
-                        <div className="flex items-center justify-between">
+                        {item.items ? (
+                          <>
+                            <div className="flex items-center justify-between">
+                              <Link
+                                to={item.link}
+                                className="block py-2 text-gray-600 hover:text-gray-900 flex-1"
+                                onClick={() => onClose && onClose()}
+                              >
+                                {item.name}
+                              </Link>
+                              <button
+                                onClick={() => toggleCategory(item.id)}
+                                className="p-1"
+                              >
+                                {expandedCategories[item.id] ? (
+                                  <ChevronUp className="h-4 w-4 text-gray-500" />
+                                ) : (
+                                  <ChevronDown className="h-4 w-4 text-gray-500" />
+                                )}
+                              </button>
+                            </div>
+                            {expandedCategories[item.id] && item.items && renderNestedItems(item.items, item.id)}
+                          </>
+                        ) : (
                           <Link
                             to={item.link}
                             className="block py-2 text-gray-600 hover:text-gray-900"
                             onClick={() => onClose && onClose()}
                           >
                             {item.name}
+                            {item.isNew && (
+                              <span className="ml-2 bg-blue-500 text-white text-xs px-1 rounded">New</span>
+                            )}
                           </Link>
-                          {item.items && (
-                            <button
-                              onClick={() => toggleCategory(item.id)}
-                              className="p-1"
-                            >
-                              {expandedCategories[item.id] ? (
-                                <ChevronUp className="h-4 w-4 text-gray-500" />
-                              ) : (
-                                <ChevronDown className="h-4 w-4 text-gray-500" />
-                              )}
-                            </button>
-                          )}
-                        </div>
-                        {item.items && expandedCategories[item.id] && renderNestedItems(item.items, item.id)}
+                        )}
                       </div>
                     ))}
                   </div>
@@ -268,6 +306,9 @@ const SidebarMenu = ({ onClose }: { onClose?: () => void }) => {
               >
                 {category.icon}
                 <span className="text-gray-800">{category.title}</span>
+                {category.isNew && (
+                  <span className="ml-2 bg-blue-500 text-white text-xs px-1 rounded">New</span>
+                )}
               </Link>
             )}
           </div>

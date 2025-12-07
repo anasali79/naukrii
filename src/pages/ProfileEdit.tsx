@@ -21,7 +21,7 @@ export default function ProfileEdit() {
     current_company: '',
     designation: '',
     experience_years: '',
-    skills: '',
+    skills: '', // Will store as comma-separated string in form
     education: '',
     resume_headline: '',
     current_location: '',
@@ -48,7 +48,9 @@ export default function ProfileEdit() {
               ...prev,
               ...data,
               email: user.email || '',
-              full_name: data.full_name || user.user_metadata?.full_name || ''
+              full_name: data.full_name || user.user_metadata?.full_name || '',
+              // Convert skills array to comma-separated string for form display
+              skills: Array.isArray(data.skills) ? data.skills.join(', ') : (data.skills || '')
             }));
           }
         } catch (error) {
@@ -79,13 +81,29 @@ export default function ProfileEdit() {
     setLoading(true);
 
     try {
+      // Convert skills string back to array for database storage
+      const skillsArray = formData.skills.split(',').map(skill => skill.trim()).filter(skill => skill.length > 0);
+      
+      const profileData = {
+        id: user?.id,
+        updated_at: new Date().toISOString(),
+        full_name: formData.full_name,
+        phone_number: formData.phone_number,
+        current_company: formData.current_company,
+        designation: formData.designation,
+        experience_years: formData.experience_years ? parseInt(formData.experience_years) : null,
+        skills: skillsArray,
+        education: formData.education,
+        resume_headline: formData.resume_headline,
+        current_location: formData.current_location,
+        preferred_location: formData.preferred_location,
+        expected_salary: formData.expected_salary,
+        notice_period: formData.notice_period ? parseInt(formData.notice_period) : 0
+      };
+
       const { error } = await supabase
         .from('profiles')
-        .upsert({
-          id: user?.id,
-          updated_at: new Date().toISOString(),
-          ...formData
-        });
+        .upsert(profileData);
 
       if (error) throw error;
 
@@ -304,4 +322,4 @@ export default function ProfileEdit() {
       </div>
     </div>
   );
-} 
+}

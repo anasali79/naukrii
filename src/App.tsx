@@ -42,6 +42,7 @@ import ProtectedRoute from './components/ProtectedRoute';
 import { useAuth } from './hooks/useAuth';
 import ProfileEdit from './pages/ProfileEdit';
 import AIInterviewPage from "./pages/AIInterviewPage";
+import Applications from "./pages/Applications";
 
 const queryClient = new QueryClient();
 
@@ -74,6 +75,11 @@ const App = () => {
             <Route path="/apply-job/:jobId" element={
               <ProtectedRoute>
                 <ApplyJob />
+              </ProtectedRoute>
+            } />
+            <Route path="/applications" element={
+              <ProtectedRoute>
+                <Applications />
               </ProtectedRoute>
             } />
             <Route path="/profile/edit" element={<ProfileEdit />} />

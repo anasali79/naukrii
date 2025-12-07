@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { Settings, HelpCircle, LogOut } from 'lucide-react';
+import { Settings, HelpCircle, LogOut, Briefcase } from 'lucide-react';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -98,6 +98,10 @@ const ProfileMenu = ({ userName, profileCompletion }: ProfileMenuProps) => {
         </div>
 
         <div className="py-2">
+          <Link to="/applications" className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100">
+            <Briefcase className="w-5 h-5" />
+            <span>My Applications</span>
+          </Link>
           <Link to="/blog" className="flex items-center gap-2 px-4 py-2 hover:bg-gray-100">
             <img src="/icons/blog.svg" alt="" className="w-5 h-5" />
             <span>Naukri Blog</span>
@@ -123,4 +127,4 @@ const ProfileMenu = ({ userName, profileCompletion }: ProfileMenuProps) => {
   );
 };
 
-export default ProfileMenu; 
+export default ProfileMenu;

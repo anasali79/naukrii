@@ -22,7 +22,7 @@ const LoggedInHome = () => {
             {/* Left section */}
             <div className="flex items-center gap-8">
               <Link to="/">
-                <img src="https://static.naukimg.com/s/4/100/i/naukri_Logo.png" alt="Naukri" className="h-8" />
+                <img src="/naukri-logo.png" alt="Naukri" className="h-8" />
               </Link>
               <nav className="hidden md:flex items-center gap-6">
                 <Link to="/jobs" className="text-gray-700 hover:text-blue-600">
@@ -83,30 +83,30 @@ const LoggedInHome = () => {
               </div>
               <div className="space-y-3 text-sm">
                 <div className="flex items-center gap-2 text-gray-600">
-                  <img src="https://static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/profile.a6ee3b33.svg" alt="" className="w-4 h-4" />
+                  <img src="/placeholder.svg" alt="" className="w-4 h-4" />
                   <span>Job application updates</span>
                 </div>
                 <div className="flex items-center gap-2 text-gray-600">
-                  <img src="https://static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/alert.c0926df9.svg" alt="" className="w-4 h-4" />
+                  <img src="/placeholder.svg" alt="" className="w-4 h-4" />
                   <span>Direct jobs from recruiters</span>
                 </div>
                 <Button onClick={() => navigate('/profile/edit')} className="w-full bg-blue-600 hover:bg-blue-700 text-white">Complete profile</Button>
               </div>
               <div className="mt-6 space-y-4">
                 <Link to="/my-home" className="flex items-center gap-2 p-2 hover:bg-gray-50 rounded text-gray-700">
-                  <img src="https://static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/home.74d7463f.svg" alt="" className="w-5 h-5" />
+                  <img src="/placeholder.svg" alt="" className="w-5 h-5" />
                   <span>My home</span>
                 </Link>
                 <Link to="/jobs" className="flex items-center gap-2 p-2 hover:bg-gray-50 rounded text-gray-700">
-                  <img src="https://static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/jobs.0f5e2b90.svg" alt="" className="w-5 h-5" />
+                  <img src="/placeholder.svg" alt="" className="w-5 h-5" />
                   <span>Jobs</span>
                 </Link>
                 <Link to="/companies" className="flex items-center gap-2 p-2 hover:bg-gray-50 rounded text-gray-700">
-                  <img src="https://static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/companies.da7e4f97.svg" alt="" className="w-5 h-5" />
+                  <img src="/placeholder.svg" alt="" className="w-5 h-5" />
                   <span>Companies</span>
                 </Link>
                 <Link to="/blogs" className="flex items-center gap-2 p-2 hover:bg-gray-50 rounded text-gray-700">
-                  <img src="https://static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/blog.f0e77ec0.svg" alt="" className="w-5 h-5" />
+                  <img src="/placeholder.svg" alt="" className="w-5 h-5" />
                   <span>Blogs</span>
                 </Link>
               </div>
@@ -124,7 +124,7 @@ const LoggedInHome = () => {
                     <p className="mb-4">Get AI answers, tips and insights</p>
                     <Button className="bg-white text-cyan-600 hover:bg-gray-100">Start practicing</Button>
                   </div>
-                  <img src="https://static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/interview.b88c8940.svg" alt="Mock Interview" className="w-24" />
+                  <img src="/placeholder.svg" alt="Mock Interview" className="w-24" />
                 </div>
               </div>
             </Card>
@@ -140,7 +140,7 @@ const LoggedInHome = () => {
                   <div className="flex items-start justify-between">
                     <div>
                       <div className="flex items-center gap-2 mb-2">
-                        <img src="https://img.naukimg.com/logo_images/groups/v1/4264.gif" alt="Wipro" className="w-12 h-12 rounded" />
+                        <img src="/placeholder.svg" alt="Wipro" className="w-12 h-12 rounded" />
                         <div>
                           <h3 className="font-medium">Developer - L4</h3>
                           <p className="text-gray-600 text-sm">Wipro • 3-7 years</p>
@@ -173,7 +173,7 @@ const LoggedInHome = () => {
                     </ol>
                     <Button className="bg-blue-600 hover:bg-blue-700 text-white">Create resume</Button>
                   </div>
-                  <img src="https://static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/resume.f7fdc1db.svg" alt="Resume" className="w-32" />
+                  <img src="/placeholder.svg" alt="Resume" className="w-32" />
                 </div>
               </div>
             </Card>
@@ -187,9 +187,9 @@ const LoggedInHome = () => {
                 </div>
                 <div className="grid grid-cols-3 gap-4">
                   {[
-                    { name: 'Thomson Reuters', logo: 'https://img.naukimg.com/logo_images/groups/v1/4264.gif', rating: '4.1', reviews: '1.6K+' },
-                    { name: 'Infosys', logo: 'https://img.naukimg.com/logo_images/groups/v1/4156.gif', rating: '3.8', reviews: '21.5K+' },
-                    { name: 'V-Mart', logo: 'https://img.naukimg.com/logo_images/groups/v1/4577491.gif', rating: '4.2', reviews: '2.5K+' }
+                    { name: 'Thomson Reuters', logo: '/placeholder.svg', rating: '4.1', reviews: '1.6K+' },
+                    { name: 'Infosys', logo: '/placeholder.svg', rating: '3.8', reviews: '21.5K+' },
+                    { name: 'V-Mart', logo: '/placeholder.svg', rating: '4.2', reviews: '2.5K+' }
                   ].map((company) => (
                     <div key={company.name} className="border rounded-lg p-4">
                       <img src={company.logo} alt={company.name} className="h-12 mb-3" />
@@ -208,24 +208,24 @@ const LoggedInHome = () => {
               </div>
             </Card>
 
-            {/* Blogs */}
-            <Card>
+            {/* Blogs Section */}
+            <Card className="mb-6">
               <div className="p-6">
                 <div className="flex items-center justify-between mb-4">
-                  <h2 className="text-lg font-semibold">Stay updated with our blogs</h2>
-                  <Link to="/blogs" className="text-blue-600 hover:text-blue-700 text-sm">View all</Link>
+                  <h2 className="text-lg font-semibold">Blogs</h2>
+                  <Link to="/blogs" className="text-blue-600 hover:text-blue-700 text-sm">See all</Link>
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                   {[
                     {
                       title: 'Understanding Hiring Trends With Naukri JobSpeak Report - March 2024',
                       date: '7 Mar 2024',
-                      image: 'https://static.naukimg.com/s/0/0/images/blog1.jpg'
+                      image: '/placeholder.svg'
                     },
                     {
                       title: 'WOMEN @ WORK: The Unfinished Truth',
                       date: '4 Mar 2024',
-                      image: 'https://static.naukimg.com/s/0/0/images/blog2.jpg'
+                      image: '/placeholder.svg'
                     }
                   ].map((blog) => (
                     <Link key={blog.title} to={`/blogs/${blog.title.toLowerCase().replace(/[^a-z0-9]+/g, '-')}`} className="group">
@@ -233,7 +233,7 @@ const LoggedInHome = () => {
                         <img src={blog.image} alt={blog.title} className="w-full h-full object-cover" />
                       </div>
                       <h3 className="font-medium group-hover:text-blue-600 line-clamp-2">{blog.title}</h3>
-                      <p className="text-sm text-gray-500 mt-1">Naukri Blog • {blog.date}</p>
+                      <p className="text-sm text-gray-500 mt-1">{blog.date}</p>
                     </Link>
                   ))}
                 </div>
@@ -243,33 +243,29 @@ const LoggedInHome = () => {
 
           {/* Right Sidebar */}
           <div className="col-span-3">
+            {/* Profile Completion */}
             <Card className="mb-6">
               <div className="p-6">
-                <h2 className="font-medium mb-4">Where are you in your job search journey?</h2>
-                <div className="space-y-2">
-                  {[
-                    'Actively searching jobs',
-                    'Preparing for interview',
-                    'Appearing for interview',
-                    'Received a job offer',
-                    'Casually exploring jobs',
-                    'Not looking for jobs'
-                  ].map((status) => (
-                    <button
-                      key={status}
-                      className="w-full text-left px-4 py-2 rounded-full border hover:border-blue-600 hover:text-blue-600"
-                    >
-                      {status}
-                    </button>
-                  ))}
+                <h2 className="font-semibold mb-4">Profile completion</h2>
+                <div className="flex items-center justify-between mb-2">
+                  <span className="text-sm text-gray-600">5%</span>
+                  <span className="text-sm text-blue-600">Add now</span>
                 </div>
+                <div className="w-full bg-gray-200 rounded-full h-2 mb-4">
+                  <div className="bg-blue-600 h-2 rounded-full" style={{ width: '5%' }}></div>
+                </div>
+                <p className="text-sm text-gray-600 mb-4">Improve your chances of getting a call by 3x</p>
+                <Button variant="outline" className="w-full border-blue-600 text-blue-600 hover:bg-blue-50">
+                  Complete profile
+                </Button>
               </div>
             </Card>
 
-            <Card>
+            {/* WhatsApp Updates */}
+            <Card className="mb-6">
               <div className="p-6">
                 <div className="flex items-start gap-4">
-                  <img src="https://static.naukimg.com/s/7/0/assets/images/node_modules/@naukri-ui-dev/premiumstandardads/component/assets/whatsapp.b53246b6.svg" alt="" className="w-12" />
+                  <img src="/whatsapp.svg" alt="" className="w-12" />
                   <div>
                     <h2 className="font-medium mb-1">Get updates directly on WhatsApp!</h2>
                     <p className="text-sm text-gray-600 mb-3">Know instantly when status of your job application changes</p>
@@ -380,4 +376,4 @@ const LoggedInHome = () => {
   );
 };
 
-export default LoggedInHome; 
+export default LoggedInHome;

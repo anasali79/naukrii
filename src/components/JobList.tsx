@@ -58,11 +58,10 @@ const JobList: React.FC<JobListProps> = ({
         <JobCard
           key={job.id}
           job={job}
-          isLoggedIn={isLoggedIn}
         />
       ))}
     </div>
   );
 };
 
-export default JobList; 
+export default JobList;

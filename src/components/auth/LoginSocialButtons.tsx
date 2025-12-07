@@ -28,8 +28,8 @@ export const LoginSocialButtons: React.FC<LoginSocialButtonsProps> = ({ redirect
   
   // Get the redirect URL from props or from location state
   const getRedirectUrl = () => {
-    // Force the redirect URL to use port 8082
-    return 'http://localhost:8082/auth/callback';
+    // Use the correct port for the development server (8080)
+    return `${window.location.origin}/auth/callback`;
   };
 
   const handleSocialLogin = async (provider: 'google') => {

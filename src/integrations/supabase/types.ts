@@ -9,9 +9,57 @@ export type Json =
 export type Database = {
   public: {
     Tables: {
+      job_applications: {
+        Row: {
+          id: string
+          job_id: string
+          user_id: string
+          status: string
+          job_title: string
+          company_name: string
+          location: string
+          applied_at: string
+          created_at: string
+          updated_at: string
+        }
+        Insert: {
+          id?: string
+          job_id: string
+          user_id: string
+          status?: string
+          job_title: string
+          company_name: string
+          location: string
+          applied_at?: string
+          created_at?: string
+          updated_at?: string
+        }
+        Update: {
+          id?: string
+          job_id?: string
+          user_id?: string
+          status?: string
+          job_title?: string
+          company_name?: string
+          location?: string
+          applied_at?: string
+          created_at?: string
+          updated_at?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "job_applications_user_id_fkey"
+            columns: ["user_id"]
+            referencedRelation: "users"
+            referencedColumns: ["id"]
+          }
+        ]
+      }
       profiles: {
         Row: {
           company_name: string | null
+          company_description: string | null
+          company_website: string | null
           created_at: string
           full_name: string | null
           id: string
@@ -20,9 +68,16 @@ export type Database = {
           receive_updates: boolean | null
           updated_at: string
           user_type: Database["public"]["Enums"]["user_type"]
+          resume_url: string | null
+          skills: string[] | null
+          experience: number | null
+          education: string | null
+          bio: string | null
         }
         Insert: {
           company_name?: string | null
+          company_description?: string | null
+          company_website?: string | null
           created_at?: string
           full_name?: string | null
           id: string
@@ -31,9 +86,16 @@ export type Database = {
           receive_updates?: boolean | null
           updated_at?: string
           user_type?: Database["public"]["Enums"]["user_type"]
+          resume_url?: string | null
+          skills?: string[] | null
+          experience?: number | null
+          education?: string | null
+          bio?: string | null
         }
         Update: {
           company_name?: string | null
+          company_description?: string | null
+          company_website?: string | null
           created_at?: string
           full_name?: string | null
           id?: string
@@ -42,6 +104,11 @@ export type Database = {
           receive_updates?: boolean | null
           updated_at?: string
           user_type?: Database["public"]["Enums"]["user_type"]
+          resume_url?: string | null
+          skills?: string[] | null
+          experience?: number | null
+          education?: string | null
+          bio?: string | null
         }
         Relationships: []
       }
