@@ -28,7 +28,12 @@ export const LoginSocialButtons: React.FC<LoginSocialButtonsProps> = ({ redirect
   
   // Get the redirect URL from props or from location state
   const getRedirectUrl = () => {
-    // Use the correct port for the development server (8080)
+    // For local development, temporarily use the production URL
+    // TODO: Change this back to localhost when Supabase is configured properly
+    if (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') {
+      return 'https://naukrii.vercel.app/auth/callback';
+    }
+    // Use the correct port for the development server
     return `${window.location.origin}/auth/callback`;
   };
 
